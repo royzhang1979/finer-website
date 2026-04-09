@@ -1,5 +1,6 @@
 "use client";
 import { Mail } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -38,9 +39,9 @@ export default function Footer() {
           <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer" className="hover:text-gray-900 dark:hover:text-gray-400 transition-colors">
             冀ICP备XXXXXX号-1
           </a>
-          <a href="#" className="hover:text-gray-900 dark:hover:text-gray-400 transition-colors">隐私政策</a>
-          <a href="#" className="hover:text-gray-900 dark:hover:text-gray-400 transition-colors">服务条款</a>
-        </div>
+          <Link href="/privacy" className="hover:text-gray-900 dark:hover:text-gray-400 transition-colors">隐私政策</Link>
+          <Link href="/terms" className="hover:text-gray-900 dark:hover:text-gray-400 transition-colors">服务条款</Link>
+       </div>
       </div>
     </footer>
   );

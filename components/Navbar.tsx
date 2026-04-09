@@ -23,6 +23,7 @@ export default function Navbar() {
     { name: "核心服务", href: "/services" },
     { name: "案例展示", href: "/cases" },
     { name: "专家支持", href: "/services/tech-support" },
+    { name: "技术专栏", href: "/blog" },
     { name: "关于我们", href: "/about" },
   ];
 
