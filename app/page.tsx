@@ -3,21 +3,15 @@ import { sendEmail } from "./actions";
 import { motion } from "framer-motion";
 import { Cpu, Globe, Rocket, Eye, Briefcase, ShieldCheck, Mail, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link"; // 🚀 新增：导入 Next.js 官方链接组件
 
 
 export default function Home() {
-  // 注意看！这里彻底去掉了原来那堆繁琐的 useState 深浅色判断代码
-  // 因为现在全局的 layout.tsx 已经接管了这一切
-
   return (
-    // 这里也去掉了原来的包裹 div，直接渲染 main
     <main className="min-h-screen bg-gray-50 dark:bg-[#050505] text-gray-900 dark:text-white overflow-hidden selection:bg-blue-500/30 transition-colors duration-500">
       
       {/* 科技感背景网格 */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-
-      {/* 🚀 调用公共导航栏 (不再写一长串代码了) */}
-     
 
       {/* 主视觉区 */}
       <section className="relative pt-24 pb-20 px-4 text-center z-10">
@@ -39,9 +33,10 @@ export default function Home() {
             <a href="#contact" className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold shadow-lg shadow-blue-600/20 transition-all hover:-translate-y-1">
               获取方案
             </a>
-            <button className="px-8 py-4 bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/10 text-gray-900 dark:text-white rounded-xl font-bold transition-all shadow-sm">
+            {/* 🚀 修复：替换为空壳按钮，改为跳转到案例页 */}
+            <Link href="/cases" className="inline-flex items-center justify-center px-8 py-4 bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/10 text-gray-900 dark:text-white rounded-xl font-bold transition-all shadow-sm">
               查看案例
-            </button>
+            </Link>
           </div>
         </motion.div>
       </section>
@@ -49,15 +44,15 @@ export default function Home() {
       {/* 特色卡片区域 */}
       <section id="ai-agent" className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-6 pb-20 relative z-10">
         {[
-          { icon: <Cpu />, title: "AI 智能体", desc: "本地化私有部署，确保核心数据绝对不出域。" },
-          { icon: <Rocket />, title: "敏捷系统", desc: "低代码快速交付，直击业务痛点，告别漫长开发。" },
-          { icon: <Globe />, title: "网络基建", desc: "高可用底层架构，赋能全球业务极速流转。" }
+          { icon: <Cpu />, title: "AI 智能体", desc: "本地化私有部署，确保核心数据绝对不出域。", link: "/services/ai-agent" },
+          { icon: <Rocket />, title: "敏捷系统", desc: "低代码快速交付，直击业务痛点，告别漫长开发。", link: "/services/low-code" },
+          { icon: <Globe />, title: "网络基建", desc: "高可用底层架构，赋能全球业务极速流转。", link: "/services/network" }
         ].map((item, idx) => (
-          <div key={idx} className="p-8 bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 rounded-2xl hover:border-blue-500/50 dark:hover:border-blue-500/30 transition-all group cursor-pointer shadow-sm dark:shadow-none hover:shadow-md">
+          <Link href={item.link} key={idx} className="block p-8 bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 rounded-2xl hover:border-blue-500/50 dark:hover:border-blue-500/30 transition-all group cursor-pointer shadow-sm dark:shadow-none hover:shadow-md">
             <div className="text-blue-600 dark:text-blue-500 mb-4 group-hover:scale-110 transition-transform">{item.icon}</div>
-            <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{item.title}</h3>
+            <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">{item.title}</h3>
             <p className="text-gray-600 dark:text-gray-500 text-sm leading-relaxed">{item.desc}</p>
-          </div>
+          </Link>
         ))}
       </section>
       
@@ -84,7 +79,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 🚀 注意看这里：文案已经修改为纯纯的硬核科技调性 */}
+      {/* 行业解决方案与业务实力 */}
       <section id="solutions" className="max-w-7xl mx-auto px-6 py-24 relative z-10 border-t border-gray-200 dark:border-white/5 mt-12">
         <div className="flex flex-col md:flex-row gap-16 items-center">
           <div className="flex-1 space-y-8">
@@ -108,9 +103,10 @@ export default function Home() {
                 </div>
               </li>
             </ul>
-            <button className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+            {/* 🚀 修复：替换空壳按钮，改为指向 services 页面 */}
+            <Link href="/services" className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
               深入了解技术解决方案 <ChevronRight size={16} />
-            </button>
+            </Link>
           </div>
           
           <div className="flex-1 w-full grid grid-cols-2 gap-4">
