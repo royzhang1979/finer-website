@@ -8,7 +8,7 @@ export default function NetworkService() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-[#050505] text-gray-900 dark:text-white transition-colors duration-500">
       <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] z-0"></div>
-      <Navbar />
+     
       <main className="relative z-10 max-w-4xl mx-auto px-6 pb-24 mt-8">
         <Link href="/services" className="inline-flex items-center gap-2 text-gray-500 hover:text-purple-600 mb-12 transition-colors font-medium">
           <ArrowLeft size={18} /> 返回核心服务
