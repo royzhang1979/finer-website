@@ -6,10 +6,8 @@ import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
-  // 控制手机端菜单的开关状态
   const [isOpen, setIsOpen] = useState(false);
   
-  // 主题切换逻辑
   const { theme, setTheme, systemTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -17,11 +15,12 @@ export default function Navbar() {
   const currentTheme = theme === 'system' ? systemTheme : theme;
   const isDark = currentTheme === 'dark';
 
-  // 统一定义导航链接，方便以后修改
+  // 🚀 在这里加上了“服务报价”的专属链接
   const navLinks = [
-    { name: "AI 智能体", href: "/services/ai-agent" },
     { name: "核心服务", href: "/services" },
+    { name: "AI 智能体", href: "/services/ai-agent" },
     { name: "案例展示", href: "/cases" },
+    { name: "服务报价", href: "/pricing" }, 
     { name: "专家支持", href: "/services/tech-support" },
     { name: "技术专栏", href: "/blog" },
     { name: "关于我们", href: "/about" },
@@ -29,7 +28,6 @@ export default function Navbar() {
 
   return (
     <nav className="relative z-50 max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
-      {/* 1. 左侧 Logo 区 (电脑和手机都显示) */}
       <Link href="/" className="flex items-center gap-2 group z-50">
         <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white italic group-hover:bg-blue-500 transition-colors">F</div>
         <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -37,8 +35,7 @@ export default function Navbar() {
         </span>
       </Link>
 
-      {/* 2. 中间菜单区 (仅电脑端显示) */}
-      <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600 dark:text-gray-400">
+      <div className="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm font-medium text-gray-600 dark:text-gray-400">
         {navLinks.map((link, index) => (
           <Link key={index} href={link.href} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
             {link.name}
@@ -46,9 +43,7 @@ export default function Navbar() {
         ))}
       </div>
       
-      {/* 3. 右侧操作区 (电脑端显示按钮，手机端显示汉堡菜单) */}
       <div className="flex items-center gap-4 z-50">
-        {/* 深浅色切换按钮 (所有设备都显示) */}
         {mounted && (
           <button 
             onClick={() => setTheme(isDark ? 'light' : 'dark')}
@@ -59,12 +54,10 @@ export default function Navbar() {
           </button>
         )}
 
-        {/* 电脑端咨询按钮 */}
         <Link href="/#contact" className="hidden md:block px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-full text-sm font-medium transition-all shadow-lg shadow-blue-500/30 hover:-translate-y-0.5">
           开始咨询
         </Link>
 
-        {/* 🚀 手机端汉堡菜单按钮 (仅手机端显示 md:hidden) */}
         <button 
           className="md:hidden p-2 text-gray-700 dark:text-gray-300"
           onClick={() => setIsOpen(!isOpen)}
@@ -73,7 +66,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* 4. 🚀 手机端下拉菜单 (带平滑动画) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -89,7 +81,7 @@ export default function Navbar() {
                   key={index} 
                   href={link.href} 
                   className="text-lg font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 border-b border-gray-100 dark:border-white/5 pb-4"
-                  onClick={() => setIsOpen(false)} // 点击链接后自动关闭菜单
+                  onClick={() => setIsOpen(false)}
                 >
                   {link.name}
                 </Link>

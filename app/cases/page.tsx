@@ -3,32 +3,30 @@ import { motion } from "framer-motion";
 import { CheckCircle2, TrendingUp, ShieldCheck, Zap, ArrowLeft, BarChart3 } from "lucide-react";
 import Link from "next/link";
 
-
-// 这里就是存放所有案例的“数组”
 const CASE_STUDIES = [
   {
+    title: "高端 B2B 出海视觉重构：全矩阵短视频与图文引擎",
+    tag: "数字视觉工程",
+    description: "某拥有 20 年历史的传统实体出口企业（主营高附加值外贸制成品），产品物理工艺极佳。但受限于宣传物料老旧、视频剪辑粗糙，导致在 YouTube 等海外主流 B2B 平台上播放量极低，无法突破客单价天花板。",
+    solution: "采用达芬奇（DaVinci Resolve）进行商业级视频调色与剪辑，结合前沿动效对产品核心工艺进行视觉放大；同时运用 AI 配合专业设计，打造多语种、高点击率的图文矩阵进行高频精准分发，彻底重构品牌出海的数字门面。",
+    results: [
+      { label: "海外社媒曝光", value: "提升 600%" },
+      { label: "高质量询盘", value: "增加 45%" },
+      { label: "视觉产出效率", value: "提高 3 倍" }
+    ],
+    color: "cyan"
+  },
+  {
     title: "企业全栈数字化门户：从品牌设计到高性能部署",
-    tag: "网站建设与系统设计",
-    description: "某初创出海企业需要一套既能展示品牌调性，又能适配全球访问速度，且具备后台自主管理能力的 B2B 门户网站。传统模板网站速度慢、SEO 差，无法满足其高端定位。",
-    solution: "采用 Next.js + Tailwind CSS 架构进行响应式开发，确保全球极速加载。集成定制化内容管理系统，并部署至边缘网络，实现 0 维护成本与卓越的搜索引擎收录。",
+    tag: "全栈网站建设",
+    description: "某初创出海企业需要一套既能展示品牌调性，又能适配全球极速访问的 B2B 门户网站。传统模板建站经常出现跨国访问超时、SEO 权重低等问题。",
+    solution: "采用 Next.js + Tailwind CSS 极客架构进行响应式开发。集成定制化内容管理系统，并直接部署至全球分布式边缘网络节点，实现 0 维护成本与卓越的谷歌搜索引擎收录。",
     results: [
       { label: "页面加载速度", value: "< 1.5s" },
       { label: "海外收录量", value: "提升 300%" },
       { label: "交付周期", value: "2 周" }
     ],
     color: "pink"
-  },
-  {
-    title: "集团级 IT 资产运维：软硬件生命周期保障工程",
-    tag: "电脑维修与网络维护",
-    description: "某拥有百台设备的办公园区，因设备老化、系统混乱导致办公效率低下。经常出现系统崩溃、打印机连不上、硬件故障无人修等“IT 泥潭”问题。",
-    solution: "实施全量设备健康审计，建立硬件台账。通过系统镜像标准化、物理除尘加固、高性能硬件定制升级（组装工作站）以及周期性巡检，将“救火式”维修转变为“主动式”保障。",
-    results: [
-      { label: "设备故障率", value: "降低 85%" },
-      { label: "响应时间", value: "4 小时内" },
-      { label: "设备寿命平均", value: "延长 2 年" }
-    ],
-    color: "red"
   },
   {
     title: "跨国贸易巨头：私有化 AI 智能体集群部署",
@@ -65,6 +63,18 @@ const CASE_STUDIES = [
       { label: "系统可用性", value: "99.99%" }
     ],
     color: "purple"
+  },
+  {
+    title: "集团级 IT 资产运维：软硬件生命周期保障工程",
+    tag: "硬件运维与排障",
+    description: "某拥有百台设备的办公园区，因设备老化、系统混乱导致办公效率低下。经常出现系统崩溃、网络瘫痪、硬件故障无人修等“IT 泥潭”问题。",
+    solution: "实施全量设备健康审计，建立硬件台账。通过系统镜像标准化、物理除尘加固、高性能算力硬件组装以及周期性巡检，将“救火式”维修转变为“主动式”保障。",
+    results: [
+      { label: "设备故障率", value: "降低 85%" },
+      { label: "排障响应时间", value: "4 小时内" },
+      { label: "设备寿命平均", value: "延长 2 年" }
+    ],
+    color: "red"
   }
 ];
 
@@ -75,10 +85,10 @@ export default function Cases() {
       <main className="relative z-10 max-w-7xl mx-auto px-6 pb-24 mt-8">
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-6xl font-black tracking-tight">
-            实战案例：<span className="text-blue-600">从底层维保到 AI 落地</span>
+            实战案例：<span className="text-blue-600">从全栈重构到维保落地</span>
           </motion.h1>
           <p className="text-lg text-gray-600 dark:text-gray-400">
-            不管是修好一台保障业务的电脑，还是部署一套改变生产力的 AI，我们都全力以赴。
+            不管是拯救一台濒临崩溃的办公电脑，还是打造一套惊艳全球的高端出海门户，我们都以极客精神全力以赴。
           </p>
         </div>
 
@@ -129,7 +139,7 @@ export default function Cases() {
         <div className="mt-24 bg-blue-600 rounded-3xl p-12 text-center text-white relative overflow-hidden shadow-2xl">
           <div className="relative z-10 space-y-6">
             <h2 className="text-3xl md:text-4xl font-bold">准备好解决您的技术难题了吗？</h2>
-            <p className="text-blue-100 text-lg max-w-2xl mx-auto">无论是基础运维还是前沿 AI 部署，霏乐科技的技术专家都已准备就绪。</p>
+            <p className="text-blue-100 text-lg max-w-2xl mx-auto">无论是前沿的视觉营销建站，还是硬核的网络排障维保，技术专家都已准备就绪。</p>
             <Link href="/#contact" className="inline-block px-8 py-4 bg-white text-blue-600 rounded-xl font-bold hover:bg-blue-50 transition-all hover:scale-105">
               立即预约技术咨询
             </Link>
