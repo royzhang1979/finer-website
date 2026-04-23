@@ -46,7 +46,7 @@ export default function Footer() {
         <p>© {new Date().getFullYear()} 霏乐科技有限公司 (Finer Technology Co., Ltd.) 保留所有权利。</p>
         <div className="mt-4 md:mt-0 flex space-x-4">
           <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer" className="hover:text-gray-900 dark:hover:text-gray-400 transition-colors">
-            冀ICP备XXXXXX号-1
+            冀ICP备2026001964号-3
           </a>
           <Link href="/privacy" className="hover:text-gray-900 dark:hover:text-gray-400 transition-colors">隐私政策</Link>
           <Link href="/terms" className="hover:text-gray-900 dark:hover:text-gray-400 transition-colors">服务条款</Link>
